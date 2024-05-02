@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: rgb(2, 2, 51);
+            color:white
+        }
+       #container{
+        width:50%;
+        margin-left: 25%;
+        margin-right: 25%;
+        background-color: rgb(2, 2, 90);
+        height:70%;
+        margin-top: 10%;
+        text-align: center;
+        border-radius: 20px;
+        padding-top: 40px;
+        padding-bottom: 40px;
+       }
+       input{
+        width:40%;
+        margin-left: 30%;
+        margin-right: 30%;
+        margin-top: 30px;
+        height: 30px;
+        border-radius: 10px;
+       }
+       .btn-container{
+        width:40%;
+        margin-left: 30%;
+        margin-right: 30%;
+        margin-top: 50px;
+       }
+       .btn-container > button{
+        width:90px;
+        margin-left: 30px;
+        height: 30px;
+        background-color: rgb(3, 3, 143);
+        color:white;
+        border:none;
+        border-radius: 10px;
+       }
+       button:hover{
+        background-color: white;
+        color:black
+       }
+
+       @media only screen and (max-width: 480px){
+        #container{
+            width:100%;
+            margin: 0;
+            height: 600px;
+
+        }
+        input{
+            width:90%;
+            margin: 0;
+            margin-top: 20px;
+            height:50px
+        }
+        .btn-container{
+            margin: 0;
+            padding: 0;
+            width:90%;
+            margin-top: 40px;
+        }
+        button{
+            margin: 0;
+            padding: 0;
+        }
+       }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Generate password</h1>
+        <input id="length">
+        <i>how long do you want your password to be?</i>
+        <input id="pass">
+
+        <div class="btn-container">
+            <button onclick="getPassword()">generate</button>
+            <button onclick="copyPassword()">copy</button>
+        </div>
+    </div>
+
+
+    <script>
+
+        let getPassword = () => {
+            let character = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            let password = ""
+            let passLength = document.getElementById('length').value
+            if(passLength == ''){
+                alert('password length can not be empty...try again')
+            } else {
+                for(let i = 1; i <= passLength; i++){
+                let random = Math.floor(Math.random() * character.length)
+                password += character.charAt(random)
+            }
+
+            document.getElementById('pass').value = password
+
+        }
+            }
+
+
+        let copyPassword = () => {
+            let copypass = document.getElementById('pass')
+            if(copypass.value ==''){
+                alert('there is nothing to copy')
+            }else{
+                copypass.select()
+            document.execCommand('copy')
+
+            }
+ 
+        }
+        
+        
+    </script>
+</body>
+</html>
